@@ -90,10 +90,14 @@
 
 <script>
 // @ is an alias to /src
-
 export default {
   name: 'Home',
-  components: {}
+  components: {},
+  data: function () {
+    return {
+      show: false
+    }
+  }
 }
 </script>
 
