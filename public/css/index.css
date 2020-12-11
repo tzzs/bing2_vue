@@ -1,3 +1,12 @@
-html {
-    overflow-y: hidden !important;
+/*html {*/
+/*    overflow-y: hidden !important;*/
+/*}*/
+
+/*.v-sheet.v-card:not(.v-sheet--outlined) {*/
+/*    box-shadow: none;*/
+/*}*/
+
+.v-sheet.v-card {
+    border-radius: 1px !important;
+    padding: 5% 5% 0 5%;
 }
