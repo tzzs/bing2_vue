@@ -9,7 +9,7 @@
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
-            <v-btn depressed style="background-color: write"> about </v-btn>
+            <v-btn depressed color="#fff"> about </v-btn>
             <v-btn icon>
                 <v-icon>mdi-dots-vertical</v-icon>
             </v-btn>
