@@ -1,4 +1,6 @@
-# site_demo
+# bing2_vue
+
+This is a display page of bing2 rewritten using Vue.
 
 ## Project setup
 ```

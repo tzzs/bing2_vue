@@ -10,3 +10,16 @@
     border-radius: 1px !important;
     padding: 5% 5% 0 5%;
 }
+
+/* 分隔符 */
+.library-headline {
+    width: auto;
+    border-top: 4px solid #4285f4;
+    /*margin: 0 32px;*/
+  }
+
+/* v-card-title */
+.v-card__title {
+    /* 水平居中 */
+    justify-content: center;
+}
