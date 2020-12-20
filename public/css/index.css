@@ -16,10 +16,21 @@
     width: auto;
     border-top: 4px solid #4285f4;
     /*margin: 0 32px;*/
-  }
+}
 
 /* v-card-title */
 .v-card__title {
     /* 水平居中 */
     justify-content: center;
+}
+
+/* 路由样式 */
+.router-link-active {
+    text-decoration: none;
+    color: black !important;
+}
+
+/* app-bar 背景颜色 */
+.v-app-bar {
+    background-color: white !important;
 }
