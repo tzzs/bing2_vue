@@ -1,26 +1,56 @@
 <template>
-  <v-hover v-slot:default="{ hover }">
-    <v-card class="mx-auto" width="" max-width="344" :elevation="hover ? 4 : 0">
-      <v-img v-bind:src="image.url" height="200px"></v-img>
+    <v-hover v-slot:default="{ hover }">
+        <v-card class="mx-auto" width="" :elevation="hover ? 4 : 0">
+            <v-img class="white--text align-end" v-bind:src="image.url">
+            </v-img>
 
-      <v-card-title> {{ image.title }} </v-card-title>
-
-      <v-card-subtitle> {{ image.subtitle }} </v-card-subtitle>
-    </v-card>
-  </v-hover>
+            <v-card-title class=""> {{ image.title }} </v-card-title>
+            <v-row>
+                <v-col cols="7">
+                    <v-card-subtitle align="left">
+                        {{ image.subtitle }}
+                        <br />
+                       
+                        {{ image.text }}
+                    </v-card-subtitle>
+                </v-col>
+                <v-col cols="5">
+                    <v-card-subtitle
+                        style="right: 28px;bottom: 28px;position: absolute;"
+                    >
+                        #{{ image.date }}
+                        
+                    </v-card-subtitle>
+                </v-col>
+            </v-row>
+        </v-card>
+    </v-hover>
 </template>
 
 <script>
 export default {
-  name: "TCard",
-  // "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-  props: {
-    image: {
-      type: Object,
-    },
-  },
+    name: "TCard",
+    // "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+    props: {
+        image: {
+            type: Object
+        }
+    }
 };
 </script>
 
-<style>
+<style scoped>
+.v-card__text,
+.v-card__title {
+    padding: 16px 0 0 0;
+}
+
+.v-card__subtitle {
+    padding: 0;
+}
+
+/* v-card-title 水平居中 */
+/* .v-card__title {
+    justify-content: center;
+} */
 </style>

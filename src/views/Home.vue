@@ -194,7 +194,9 @@ export default {
             image: {
                 title: "BLOG",
                 subtitle: "this is my personl blog.",
-                url: "/images/sunshine.jpg"
+                url: "/images/sunshine.jpg",
+                text: "@powerd by imtzz",
+                date: "2020/12/22"
             },
             page: 1
         };
