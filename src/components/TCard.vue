@@ -6,20 +6,26 @@
 
             <v-card-title class=""> {{ image.title }} </v-card-title>
             <v-row>
-                <v-col cols="7">
+                <v-col cols="8">
                     <v-card-subtitle align="left">
-                        {{ image.subtitle }}
+                        <a
+                            :href="
+                                'https://cn.bing.com/search?q=' + image.subtitle
+                            "
+                            target="_blank"
+                        >
+                            {{ image.subtitle }}
+                        </a>
                         <br />
-                       
                         {{ image.text }}
                     </v-card-subtitle>
                 </v-col>
-                <v-col cols="5">
+                <v-col cols="4">
                     <v-card-subtitle
-                        style="right: 28px;bottom: 28px;position: absolute;"
+                        style="right: 18px; bottom: 28px; position: absolute"
                     >
+                        <br />
                         #{{ image.date }}
-                        
                     </v-card-subtitle>
                 </v-col>
             </v-row>
@@ -47,6 +53,11 @@ export default {
 
 .v-card__subtitle {
     padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black !important;
 }
 
 /* v-card-title 水平居中 */
