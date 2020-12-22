@@ -162,15 +162,30 @@
                 <div class="library-headline"></div>
                 <v-row>
                     <v-col cols="4">
-                        <TCard :image="image" />
+                        <TCard :image="images[0]" />
                     </v-col>
                     <v-col cols="4">
-                        <TCard :image="image" />
+                        <TCard :image="images[0]" />
                     </v-col>
                     <v-col cols="4">
-                        <TCard :image="image" />
+                        <TCard :image="images[0]" />
                     </v-col>
                 </v-row>
+                <div class="library-headline"></div>
+
+                <v-row v-for="row in rowsNumber" :key="row">
+                    <v-col v-for="col in 3" :key="col" cols="4">
+                        <TCard :image="images[today - 3 * (row - 1) - col]" />
+                    </v-col>
+                </v-row>
+                <v-row v-if="lastCol > 0">
+                    <v-col v-for="col in lastCol" :key="col" cols="4">
+                        <TCard
+                            :image="images[today - 3 * rowsNumber - lastCol]"
+                        />
+                    </v-col>
+                </v-row>
+
                 <div class="library-headline"></div>
                 <div class="text-center">
                     <v-pagination v-model="page" :length="6"></v-pagination>
@@ -191,15 +206,50 @@ export default {
     data: function() {
         return {
             show: false,
-            image: {
-                title: "BLOG",
-                subtitle: "this is my personl blog.",
-                url: "/images/sunshine.jpg",
-                text: "@powerd by imtzz",
-                date: "2020/12/22"
-            },
-            page: 1
+            images: [
+                {
+                    title: "BLOG",
+                    subtitle: "this is my personl blog.",
+                    url: "/images/sunshine.jpg",
+                    text: "@powerd by imtzz",
+                    date: "2020/12/22"
+                },
+                {
+                    title: "BLOG",
+                    subtitle: "this is my personl blog.",
+                    url: "/images/sunshine.jpg",
+                    text: "@powerd by imtzz",
+                    date: "2020/12/22"
+                },
+                {
+                    title: "BLOG",
+                    subtitle: "this is my personl blog.",
+                    url: "/images/sunshine.jpg",
+                    text: "@powerd by imtzz",
+                    date: "2020/12/22"
+                }
+            ],
+            today: 1,
+            page: 1,
+            cols: 3,
+            rows: Number,
+            lastCol: Number
         };
+    },
+    computed: {
+        rowsNumber: function() {
+            console.log("rowsNumber:" + parseInt(this.today / 3));
+            return parseInt(this.today / 3);
+        },
+        lastColNumber: function() {
+            let lastCol;
+            if (this.today <= 3) {
+                lastCol = 0;
+            }
+            lastCol = this.today % 3;
+            console.log("lastColNumber:" + lastCol);
+            return lastCol;
+        }
     }
 };
 </script>
