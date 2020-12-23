@@ -16,7 +16,8 @@
         </v-app-bar>
         <v-main class="main">
             <v-container class="">
-                <div class="library-headline"></div>
+                <TDividers color="dividerColor" />
+
                 <v-row>
                     <v-col cols="4">
                         <v-hover v-slot:default="{ hover }">
@@ -148,18 +149,9 @@
                         </v-card>
                     </v-col>
                 </v-row>
-                <div class="library-headline"></div>
-                <v-row>
-                    <v-col v-for="n in 3" :key="n" cols="4">
-                        <v-hover v-slot:default="{ hover }">
-                            <v-card height="200" :elevation="hover ? 4 : 0"
-                                >IM FUN</v-card
-                            >
-                        </v-hover>
-                    </v-col>
-                </v-row>
-                <v-divider></v-divider>
-                <div class="library-headline"></div>
+
+                <TDividers :color="dividerColor" />
+
                 <v-row>
                     <v-col cols="4">
                         <TCard :image="images[0]" />
@@ -171,22 +163,23 @@
                         <TCard :image="images[0]" />
                     </v-col>
                 </v-row>
-                <div class="library-headline"></div>
+
+                <TDividers :color="dividerColor" />
 
                 <v-row v-for="row in rowsNumber" :key="row">
                     <v-col v-for="col in 3" :key="col" cols="4">
                         <TCard :image="images[today - 3 * (row - 1) - col]" />
                     </v-col>
                 </v-row>
-                <v-row v-if="lastCol > 0">
-                    <v-col v-for="col in lastCol" :key="col" cols="4">
-                        <TCard
-                            :image="images[today - 3 * rowsNumber - lastCol]"
-                        />
+                <v-row v-if="lastColNumber > 0">
+                    <v-col v-for="col in lastColNumber" :key="col" cols="4">
+                        <TCard :image="images[today - 3 * rowsNumber - col]" />
                     </v-col>
                 </v-row>
 
-                <div class="library-headline"></div>
+                <TDividers :color="dividerColor" />
+
+                <TCalendarImages :images="images" :cols="cols" :today="today" />
                 <div class="text-center">
                     <v-pagination v-model="page" :length="6"></v-pagination>
                 </div>
@@ -197,15 +190,21 @@
 
 <script>
 import TCard from "@/components/TCard";
+import TCalendarImages from "@/components/TCalendarImages";
+import TDividers from "@/components/TDividers";
+
 // @ is an alias to /src
 export default {
     name: "Home",
     components: {
-        TCard
+        TCard,
+        TCalendarImages,
+        TDividers
     },
     data: function() {
         return {
             show: false,
+            page: 1,
             images: [
                 {
                     title: "BLOG",
@@ -230,10 +229,8 @@ export default {
                 }
             ],
             today: 1,
-            page: 1,
             cols: 3,
-            rows: Number,
-            lastCol: Number
+            dividerColor: "#4285f4"
         };
     },
     computed: {
