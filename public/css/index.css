@@ -11,12 +11,7 @@
     padding: 5%;
 }
 
-/* 分隔符 */
-.library-headline {
-    width: auto;
-    border-top: 4px solid #4285f4;
-    /*margin: 0 32px;*/
-}
+
 
 /* 路由样式 */
 .router-link-active {
