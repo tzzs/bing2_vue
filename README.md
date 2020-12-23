@@ -1,5 +1,7 @@
 # bing2_vue
 
+![CI](https://github.com/tzzs/bing2_vue/workflows/CI/badge.svg)
+
 This is a display page of bing2 rewritten using Vue.
 
 ## Project setup
