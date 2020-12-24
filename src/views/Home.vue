@@ -111,6 +111,9 @@ export default {
     watch: {
         page: function() {
             // console.log("page:" + this.page);
+        },
+        date: function() {
+            // console.log("date:" + this.date);
         }
     },
     computed: {
