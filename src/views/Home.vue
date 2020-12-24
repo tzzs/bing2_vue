@@ -168,18 +168,18 @@
 
                 <v-row v-for="row in rowsNumber" :key="row">
                     <v-col v-for="col in 3" :key="col" cols="4">
-                        <TCard :image="images[today - 3 * (row - 1) - col]" />
+                        <TCard :image="images[nums - 3 * (row - 1) - col]" />
                     </v-col>
                 </v-row>
                 <v-row v-if="lastColNumber > 0">
                     <v-col v-for="col in lastColNumber" :key="col" cols="4">
-                        <TCard :image="images[today - 3 * rowsNumber - col]" />
+                        <TCard :image="images[nums - 3 * rowsNumber - col]" />
                     </v-col>
                 </v-row>
 
                 <TDividers :color="dividerColor" />
 
-                <TCalendarImages :images="images" :cols="cols" :today="today" />
+                <TCalendarImages :images="images" :cols="cols" :nums="nums" />
                 <div class="text-center">
                     <v-pagination v-model="page" :length="6"></v-pagination>
                 </div>
@@ -228,24 +228,27 @@ export default {
                     date: "2020/12/22"
                 }
             ],
-            today: 1,
             cols: 3,
             dividerColor: "#4285f4"
         };
     },
     computed: {
         rowsNumber: function() {
-            console.log("rowsNumber:" + parseInt(this.today / 3));
-            return parseInt(this.today / 3);
+            console.log("rowsNumber:" + parseInt(this.nums / 3));
+            return parseInt(this.nums / 3);
         },
         lastColNumber: function() {
             let lastCol;
-            if (this.today <= 3) {
+            if (this.nums <= 3) {
                 lastCol = 0;
             }
-            lastCol = this.today % 3;
+            lastCol = this.nums % 3;
             console.log("lastColNumber:" + lastCol);
             return lastCol;
+        },
+        nums: function() {
+            console.log("nums:" + this.images.length);
+            return this.images.length;
         }
     }
 };
