@@ -9,19 +9,39 @@
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
-            <v-btn depressed color="#fff"> about </v-btn>
-            <v-btn icon>
-                <v-icon>mdi-dots-vertical</v-icon>
+            <v-btn depressed color="#fff"> ABOUT </v-btn>
+            <v-btn icon disabled>
             </v-btn>
         </v-app-bar>
         <v-main class="main">
             <v-container class="">
+                <v-btn
+                    depressed
+                    @click.stop="dialog = true"
+                    block
+                    elevation="5"
+                    color="primary"
+                >
+                    MONTH
+                </v-btn>
+
+                <v-dialog v-model="dialog" max-width="290">
+                    <v-date-picker
+                        v-model="date"
+                        :allowed-dates="allowedMonths"
+                        type="month"
+                        class="mt-4"
+                        :min="min"
+                        :max="max"
+                    ></v-date-picker>
+                </v-dialog>
+
                 <TCalendarImages :images="images" :cols="cols" :nums="nums" />
 
                 <TDividers :color="dividerColor" />
 
                 <div class="text-center">
-                    <v-pagination v-model="page" :length="6"></v-pagination>
+                    <!-- <v-pagination v-model="years" :length="6"></v-pagination> -->
                 </div>
             </v-container>
         </v-main>
@@ -42,7 +62,7 @@ export default {
     data: function() {
         return {
             show: false,
-            page: 1,
+            years: 1,
             images: [
                 {
                     title: "BLOG",
@@ -67,7 +87,11 @@ export default {
                 }
             ],
             cols: 3,
-            dividerColor: "#4285f4"
+            dividerColor: "#4285f4",
+            date: "2020-01",
+            min: "2020-01",
+            max: "2020-10",
+            dialog: false
         };
     },
     created: function() {
@@ -77,6 +101,10 @@ export default {
             )
             .then(result => {
                 console.log(result.data);
+
+                let data = result.data;
+                this.years = data.years;
+                this.images = data.images;
             });
     },
     mouted: function() {},
@@ -102,6 +130,11 @@ export default {
         nums: function() {
             // console.log("nums:" + this.images.length);
             return this.images.length;
+        }
+    },
+    methods: {
+        allowedMonths: val => {
+            return parseInt(val.split("-")[1], 10) % 2 === 0 ? true : false;
         }
     }
 };
