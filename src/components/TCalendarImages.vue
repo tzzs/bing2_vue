@@ -36,7 +36,7 @@ export default {
     },
     computed: {
         rowsNumber: function() {
-            console.log("rowsNumber:" + parseInt(this.nums / this.cols));
+            // console.log("rowsNumber:" + parseInt(this.nums / this.cols));
             return parseInt(this.nums / this.cols);
         },
         lastColNumber: function() {
@@ -45,7 +45,7 @@ export default {
                 lastCol = 0;
             }
             lastCol = this.nums % this.cols;
-            console.log("lastColNumber:" + lastCol);
+            // console.log("lastColNumber:" + lastCol);
             return lastCol;
         }
     }
