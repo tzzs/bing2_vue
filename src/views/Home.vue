@@ -4,7 +4,7 @@
             <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
             <v-toolbar-title style="margin-left: 5%">
                 <router-link to="/">
-                    <h2>bing2</h2>
+                    <h2>BING2</h2>
                 </router-link>
             </v-toolbar-title>
 
