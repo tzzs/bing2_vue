@@ -9,21 +9,19 @@
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
+            <v-btn depressed @click.stop="dialog = true" color="#fff">
+                <h3>
+                    月份选择
+                </h3>
+            </v-btn>
+            <v-spacer></v-spacer>
+
             <v-btn depressed color="#fff"> ABOUT </v-btn>
             <v-btn icon disabled> </v-btn>
         </v-app-bar>
-        <v-main class="main">
-            <v-container class="">
-                <v-btn
-                    depressed
-                    @click.stop="dialog = true"
-                    block
-                    elevation="5"
-                    color="primary"
-                >
-                    MONTH
-                </v-btn>
 
+        <v-main class="main">
+            <v-container>
                 <v-dialog v-model="dialog" max-width="290">
                     <v-date-picker
                         v-model="date"
@@ -62,29 +60,7 @@ export default {
         return {
             show: false,
             years: 1,
-            images: [
-                {
-                    title: "BLOG",
-                    subtitle: "this is my personl blog.",
-                    url: "/images/sunshine.jpg",
-                    text: "@powerd by imtzz",
-                    date: "2020/12/22"
-                },
-                {
-                    title: "BLOG",
-                    subtitle: "this is my personl blog.",
-                    url: "/images/sunshine.jpg",
-                    text: "@powerd by imtzz",
-                    date: "2020/12/22"
-                },
-                {
-                    title: "BLOG",
-                    subtitle: "this is my personl blog.",
-                    url: "/images/sunshine.jpg",
-                    text: "@powerd by imtzz",
-                    date: "2020/12/22"
-                }
-            ],
+            images: [],
             cols: 3,
             dividerColor: "#4285f4",
             date: "2020-01",
@@ -100,7 +76,6 @@ export default {
             )
             .then(result => {
                 console.log(result.data);
-
                 let data = result.data;
                 this.years = data.years;
                 this.images = data.images;
@@ -154,7 +129,7 @@ export default {
 .main {
     margin: 0 auto;
     text-align: center;
-    /* width: 66%; */
+    width: 100%;
 }
 
 .v-card {
