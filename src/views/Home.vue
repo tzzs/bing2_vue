@@ -40,6 +40,26 @@
                 <div class="text-center">
                     <!-- <v-pagination v-model="years" :length="6"></v-pagination> -->
                 </div>
+                <div v-if="scroll > 20">
+                    <v-btn
+                        class="mx-2"
+                        elevate
+                        fab
+                        fixed
+                        large
+                        dark
+                        right
+                        bottom
+                        color="primary"
+                        title="滚动页面至顶部"
+                        aria-label="滚动页面至顶部"
+                        @click="backToTop"
+                    >
+                        <v-icon dark>
+                            mdi-chevron-up
+                        </v-icon>
+                    </v-btn>
+                </div>
             </v-container>
         </v-main>
     </v-app>
@@ -66,7 +86,8 @@ export default {
             date: "2020-01",
             min: "2020-01",
             max: "2020-10",
-            dialog: false
+            dialog: false,
+            scroll: 0
         };
     },
     created: function() {
@@ -81,7 +102,9 @@ export default {
                 this.images = data.images;
             });
     },
-    mouted: function() {},
+    mounted: function() {
+        window.addEventListener("scroll", this.handleScroll, true);
+    },
     watch: {
         page: function() {
             // console.log("page:" + this.page);
@@ -116,6 +139,20 @@ export default {
     methods: {
         allowedMonths: val => {
             return parseInt(val.split("-")[1], 10) % 2 === 0 ? true : false;
+        },
+        backToTop: function() {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
+        },
+        handleScroll: function() {
+            this.scroll =
+                document.body.scrollTop ||
+                window.pageYOffset ||
+                document.documentElement.scrollTop ||
+                document.body.scrollTop;
         }
     }
 };
