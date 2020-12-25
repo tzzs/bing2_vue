@@ -10,8 +10,7 @@
 
             <v-spacer></v-spacer>
             <v-btn depressed color="#fff"> ABOUT </v-btn>
-            <v-btn icon disabled>
-            </v-btn>
+            <v-btn icon disabled> </v-btn>
         </v-app-bar>
         <v-main class="main">
             <v-container class="">
@@ -30,9 +29,9 @@
                         v-model="date"
                         :allowed-dates="allowedMonths"
                         type="month"
-                        class="mt-4"
                         :min="min"
                         :max="max"
+                        :show-current="currentMonth"
                     ></v-date-picker>
                 </v-dialog>
 
@@ -133,6 +132,10 @@ export default {
         nums: function() {
             // console.log("nums:" + this.images.length);
             return this.images.length;
+        },
+        currentMonth: function() {
+            var date = new Date();
+            return date.getFullYear() + "-" + (date.getMonth() + 1);
         }
     },
     methods: {
