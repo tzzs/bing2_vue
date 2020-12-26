@@ -77,10 +77,15 @@
                                 <h3>BING2</h3>
                                 <br />
                                 <p>
-                                    本站所有图片均来自必应图片。
+                                    本站所有图片均来自
+                                    <a href="https://cn.bing.com/">
+                                        必应搜索。
+                                    </a>
                                     <br />
-                                    All pictures on this site are from Bing
-                                    pictures.
+                                    All pictures on this site are from
+                                    <a href="https://cn.bing.com/">
+                                        Bing search.
+                                    </a>
                                 </p>
                             </div>
                         </v-col>
