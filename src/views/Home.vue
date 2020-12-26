@@ -35,11 +35,13 @@
 
                 <TCalendarImages :images="images" :cols="cols" :nums="nums" />
 
-                <TDividers :color="dividerColor" />
+                <!-- <TDividers :color="dividerColor" /> -->
 
                 <div class="text-center">
                     <!-- <v-pagination v-model="years" :length="6"></v-pagination> -->
                 </div>
+
+                <!-- 返回顶部 -->
                 <div v-if="scroll > 20">
                     <v-btn
                         class="mx-2"
@@ -61,20 +63,81 @@
                     </v-btn>
                 </div>
             </v-container>
+
+            <!-- 页脚 -->
+            <v-divider></v-divider>
+            <v-footer padless color="white">
+                <v-container>
+                    <v-row
+                        justify="space-between"
+                        style="margin-left: 1%;margin-right: 1%"
+                    >
+                        <v-col cols="3" align="left">
+                            <div>
+                                <h3>BING2</h3>
+                                <br />
+                                <p>
+                                    本站所有图片均来自必应图片。
+                                    <br />
+                                    All pictures on this site are from Bing
+                                    pictures.
+                                </p>
+                            </div>
+                        </v-col>
+                        <v-col cols="4" align="left">
+                            <v-row>
+                                <v-col cols="4">
+                                    <div style="margin-left: 10%">
+                                        <h3>Discover</h3>
+                                        <br />
+                                        <ul>
+                                            <li>Blog</li>
+                                            <li>GitHub</li>
+                                        </ul>
+                                    </div>
+                                </v-col>
+                                <v-col cols="4">
+                                    <div style="margin-left: 10%">
+                                        <h3>Connect</h3>
+                                        <br />
+                                        <ul>
+                                            <li>
+                                                Github Issue
+                                            </li>
+                                            <li>
+                                                About
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </v-col>
+                            </v-row>
+                        </v-col>
+                    </v-row>
+                    <v-row style="margin-left: 1%;margin-right: 1%">
+                        <v-col cols="3" align="left">
+                            <router-link to="https://imtzz.com">
+                                <p>
+                                    <a href="https://imtzz.com"
+                                        >Copyright ©2020 IMTZZ.
+                                    </a>
+                                </p>
+                            </router-link>
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </v-footer>
         </v-main>
     </v-app>
 </template>
 
 <script>
 import TCalendarImages from "@/components/TCalendarImages";
-import TDividers from "@/components/TDividers";
 
 // @ is an alias to /src
 export default {
     name: "Home",
     components: {
-        TCalendarImages,
-        TDividers
+        TCalendarImages
     },
     data: function() {
         return {

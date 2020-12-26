@@ -11,10 +11,13 @@
     padding: 5%;
 }
 
-
-
 /* 路由样式 */
 .router-link-active {
+    text-decoration: none;
+    color: black !important;
+}
+
+a {
     text-decoration: none;
     color: black !important;
 }
@@ -22,4 +25,9 @@
 /* app-bar 背景颜色 */
 .v-app-bar {
     background-color: white !important;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0 !important;
 }

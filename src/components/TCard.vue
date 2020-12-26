@@ -1,26 +1,29 @@
 <template>
-    <v-hover v-slot:default="{ hover }">
-        <v-card class="mx-auto" width="" :elevation="hover ? 4 : 0">
-            <v-img class="white--text align-end" v-bind:src="image.url">
-            </v-img>
-            <v-card-text>
-                <div align="left">#{{ image.date }}</div>
-                <p align="left" class="display-1 text--primary">
-                </p>
-                <p align="left">
-                    <a
-                        :href="'https://cn.bing.com/search?q=' + image.subtitle"
-                        target="_blank"
-                    >
-                        {{ image.title }}
-                    </a>
-                </p>
-                <div class="text--primary" align="left">
-                    {{ image.text }}
-                </div>
-            </v-card-text>
-        </v-card>
-    </v-hover>
+    <v-lazy transition="fade-transition">
+        <v-hover v-slot:default="{ hover }">
+            <v-card class="mx-auto" width="" :elevation="hover ? 4 : 0">
+                <v-img class="white--text align-end" v-bind:src="image.url">
+                </v-img>
+                <v-card-text>
+                    <div align="left">#{{ image.date }}</div>
+                    <p align="left" class="display-1 text--primary"></p>
+                    <p align="left">
+                        <a
+                            :href="
+                                'https://cn.bing.com/search?q=' + image.subtitle
+                            "
+                            target="_blank"
+                        >
+                            {{ image.title }}
+                        </a>
+                    </p>
+                    <div class="text--primary" align="left">
+                        {{ image.text }}
+                    </div>
+                </v-card-text>
+            </v-card>
+        </v-hover>
+    </v-lazy>
 </template>
 
 <script>
