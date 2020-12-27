@@ -41,7 +41,7 @@ jobs:
       - name: Configure SSH
         run: |
           eval $(ssh-agent -s)
-          bash -c 'ssh-add < (echo "${KEY}")'
+          bash -c 'ssh-add <(echo "${KEY}")'
           # mkdir -p ~/.ssh 
           # echo "${KEY}" > ~/.ssh/deploy.key
           # chmod 600 ~/.ssh/deploy.key
