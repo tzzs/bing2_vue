@@ -40,18 +40,18 @@ jobs:
 
       - name: Configure SSH
         run: |
-          eval $(ssh-agent -s)
-          bash -c 'ssh-add <(echo "${KEY}")'
-          # mkdir -p ~/.ssh 
-          # echo "${KEY}" > ~/.ssh/deploy.key
-          # chmod 600 ~/.ssh/deploy.key
-          # cat >> ~/.ssh/config <<END
-          # Host server
-          #   HostName $IP
-          #   User $USERNAME
-          #   IdentityFile ~/.ssh/deploy.key
-          #   StrictHostKeyChecking no
-          # END
+          # eval $(ssh-agent -s)
+          # bash -c 'ssh-add <(echo "${KEY}")'
+          mkdir -p ~/.ssh 
+          echo "${KEY}" > ~/.ssh/deploy.key
+          chmod 600 ~/.ssh/deploy.key
+          cat >> ~/.ssh/config <<END
+          Host server
+            HostName $IP
+            User $USERNAME
+            IdentityFile ~/.ssh/deploy.key
+            StrictHostKeyChecking no
+          END
         env:
           IP: ${{secrets.SERVER_IP}}
           USERNAME: ${{secrets.SERVER_USERNAME}}
@@ -62,10 +62,10 @@ jobs:
           echo "Deploy to Server"
           # ls
           echo "Clean old bing2_vue"
-          ssh -o StrictHostKeyChecking=no ${USERNAME}@${IP} "echo test" 
-          ssh -o StrictHostKeyChecking=no ${USERNAME}@${IP} < deploy.sh > /dev/null 2>&1
+          ssh server "echo test" 
+          ssh serve < deploy.sh > /dev/null 2>&1
           echo "Start copy dist to server"
-          scp -o StrictHostKeyChecking=no -r dist/* $USERNAME@${IP}:/webdata/bing2_vue
+          scp -o StrictHostKeyChecking=no -r dist/* server:/webdata/bing2_vue
         env:
           IP: ${{secrets.SERVER_IP}}
           USERNAME: ${{secrets.SERVER_USERNAME}}
