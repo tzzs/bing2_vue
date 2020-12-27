@@ -60,11 +60,11 @@ jobs:
       - name: Deploy to Server
         run: |
           echo "Deploy to Server"
-          ls
-          echo "clean old bing2_vue"
-          ssh ${USERNAME}@${IP} "echo test" 
-          ssh ${USERNAME}@${IP} < deploy.sh > /dev/null 2>&1
-          echo "start copy dist to server"
+          # ls
+          echo "Clean old bing2_vue"
+          ssh -o StrictHostKeyChecking=no ${USERNAME}@${IP} "echo test" 
+          ssh -o StrictHostKeyChecking=no ${USERNAME}@${IP} < deploy.sh > /dev/null 2>&1
+          echo "Start copy dist to server"
           scp -o StrictHostKeyChecking=no -r dist/* $USERNAME@${IP}:/webdata/bing2_vue
         env:
           IP: ${{secrets.SERVER_IP}}
