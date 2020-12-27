@@ -63,7 +63,7 @@ jobs:
           # ls
           echo "Clean old bing2_vue"
           ssh server "echo test" 
-          ssh serve < deploy.sh > /dev/null 2>&1
+          ssh server < deploy.sh > /dev/null 2>&1
           echo "Start copy dist to server"
           scp -o StrictHostKeyChecking=no -r dist/* server:/webdata/bing2_vue
         env:
