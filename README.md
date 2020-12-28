@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/tzzs/bing2_vue/workflows/CI/badge.svg)
 
-This is a display page of bing2 rewritten using Vue.
+This is a display page of bing2 rewritten using Vue. You could visit the site via [bing2.imtzz.com](https://bing2.imtzz.com).
 
 ## Project setup
 ```
