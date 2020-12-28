@@ -78,12 +78,12 @@
                                 <br />
                                 <p>
                                     本站所有图片均来自
-                                    <a href="https://cn.bing.com/">
+                                    <a href="https://cn.bing.com/" target="_blank">
                                         必应搜索。
                                     </a>
                                     <br />
                                     All pictures on this site are from
-                                    <a href="https://cn.bing.com/">
+                                    <a href="https://cn.bing.com/" target="_blank">
                                         Bing search.
                                     </a>
                                 </p>
