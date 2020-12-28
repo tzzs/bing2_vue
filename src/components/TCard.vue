@@ -1,8 +1,8 @@
 <template>
-    <v-lazy transition="fade-transition">
+    <v-lazy transition="scale-transition">
         <v-hover v-slot:default="{ hover }">
             <v-card class="mx-auto" width="" :elevation="hover ? 4 : 0">
-                <v-img class="white--text align-end" v-bind:src="image.url">
+                <v-img class="white--text align-end" v-bind:src="image.url" lazySrc="/images/sunshine_GaussianBlur.jpg" :alt="image.title">
                 </v-img>
                 <v-card-text>
                     <div align="left">#{{ image.date }}</div>

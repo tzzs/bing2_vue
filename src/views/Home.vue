@@ -164,7 +164,7 @@ export default {
                 "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages"
             )
             .then(result => {
-                console.log(result.data);
+                // console.log(result.data);
                 let data = result.data;
                 this.years = data.years;
                 this.images = data.images;
