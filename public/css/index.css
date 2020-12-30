@@ -6,11 +6,6 @@
 /*    box-shadow: none;*/
 /*}*/
 
-.v-sheet.v-card {
-    border-radius: 1px !important;
-    padding: 5%;
-}
-
 /* 路由样式 */
 .router-link-active {
     text-decoration: none;

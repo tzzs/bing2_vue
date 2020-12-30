@@ -56,4 +56,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.v-skeleton-loader {
+    border-radius: 1px !important;
+    padding: 5%;
+}
+</style>

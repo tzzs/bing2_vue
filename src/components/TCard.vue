@@ -2,7 +2,12 @@
     <v-lazy transition="scale-transition">
         <v-hover v-slot:default="{ hover }">
             <v-card class="mx-auto" width="" :elevation="hover ? 4 : 0">
-                <v-img class="white--text align-end" v-bind:src="image.url" lazySrc="/images/sunshine_GaussianBlur.jpg" :alt="image.title">
+                <v-img
+                    class="white--text align-end"
+                    v-bind:src="image.url"
+                    lazySrc="/images/sunshine_GaussianBlur.jpg"
+                    :alt="image.title"
+                >
                 </v-img>
                 <v-card-text>
                     <div align="left">#{{ image.date }}</div>
@@ -51,6 +56,11 @@ export default {
 a {
     text-decoration: none;
     color: black !important;
+}
+
+.v-sheet.v-card {
+    border-radius: 1px !important;
+    padding: 5%;
 }
 
 /* v-card-title 水平居中 */
