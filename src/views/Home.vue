@@ -33,7 +33,14 @@
                     ></v-date-picker>
                 </v-dialog>
 
-                <TCalendarImages :images="images" :cols="cols" :nums="nums" />
+                <TCalendarImages
+                    v-show="loaded"
+                    :images="images"
+                    :cols="cols"
+                    :nums="nums"
+                />
+
+                <TSkeletonLoaders v-show="!loaded" :cols="cols" :nums="nums" />
 
                 <!-- <TDividers :color="dividerColor" /> -->
 
@@ -72,13 +79,15 @@
 <script>
 import TCalendarImages from "@/components/TCalendarImages";
 import TFooter from "@/components/TFooter";
+import TSkeletonLoaders from "@/components/TSkeletonLoaders";
 
 // @ is an alias to /src
 export default {
     name: "Home",
     components: {
         TCalendarImages,
-        TFooter
+        TFooter,
+        TSkeletonLoaders
     },
     data: function() {
         return {
@@ -91,23 +100,20 @@ export default {
             min: "2020-01",
             max: "2020-10",
             dialog: false,
-            scroll: 0
+            scroll: 0,
+            loaded: false,
+            nums: parseInt(new Date().getDate())
         };
     },
-    created: function() {
-        this.axios
-            .get(
-                "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages"
-            )
-            .then(result => {
-                // console.log(result.data);
-                let data = result.data;
-                this.years = data.years;
-                this.images = data.images;
-            });
-    },
+    created: function() {},
     mounted: function() {
         window.addEventListener("scroll", this.handleScroll, true);
+        // console.log("请求开始");
+
+        let _this = this;
+        setTimeout(() => {
+            _this.getImages();
+        }, 1000);
     },
     watch: {
         page: function() {
@@ -131,10 +137,10 @@ export default {
             // console.log("lastColNumber:" + lastCol);
             return lastCol;
         },
-        nums: function() {
-            // console.log("nums:" + this.images.length);
-            return this.images.length;
-        },
+        // nums: function() {
+        //     // console.log("nums:" + this.images.length);
+        //     return this.images.length;
+        // },
         currentMonth: function() {
             var date = new Date();
             return date.getFullYear() + "-" + (date.getMonth() + 1);
@@ -157,6 +163,21 @@ export default {
                 window.pageYOffset ||
                 document.documentElement.scrollTop ||
                 document.body.scrollTop;
+        },
+        getImages: function() {
+            this.axios
+                .get(
+                    "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages"
+                )
+                .then(result => {
+                    // console.log(result.data);
+                    let data = result.data;
+                    this.years = data.years;
+                    this.images = data.images;
+                    this.nums = data.images.length;
+                    this.loaded = true;
+                    // console.log("请求结束");
+                });
         }
     }
 };
