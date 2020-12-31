@@ -30,6 +30,7 @@
                         :min="min"
                         :max="max"
                         :show-current="currentMonth"
+                        scrollable
                     ></v-date-picker>
                 </v-dialog>
 
@@ -91,21 +92,19 @@ export default {
     },
     data: function() {
         return {
-            show: false,
-            years: 1,
+            years: Number,
             images: [],
             cols: 3,
             dividerColor: "#4285f4",
-            date: "2020-01",
+            date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1),
             min: "2020-01",
-            max: "2020-10",
+            max: new Date().getFullYear() + "-" + (new Date().getMonth() + 1),
             dialog: false,
             scroll: 0,
             loaded: false,
             nums: parseInt(new Date().getDate())
         };
     },
-    created: function() {},
     mounted: function() {
         window.addEventListener("scroll", this.handleScroll, true);
         // console.log("请求开始");
@@ -116,11 +115,28 @@ export default {
         }, 1000);
     },
     watch: {
-        page: function() {
-            // console.log("page:" + this.page);
-        },
         date: function() {
-            // console.log("date:" + this.date);
+            // console.log("date:" + this.date.split("-").join(""));
+
+            // 切换月份后，更新显示图片，重新拉起请求
+            this.axios
+                .get(
+                    "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages",
+                    {
+                        params: {
+                            month: this.date.split("-").join("")
+                        }
+                    }
+                )
+                .then(result => {
+                    // console.log(result.data);
+                    let data = result.data;
+                    this.years = data.years;
+                    this.images = data.images;
+                    this.nums = data.images.length;
+                    this.loaded = true;
+                    // console.log("请求结束");
+                });
         }
     },
     computed: {
@@ -141,6 +157,7 @@ export default {
         //     // console.log("nums:" + this.images.length);
         //     return this.images.length;
         // },
+        // 计算月份选择器的当前月份
         currentMonth: function() {
             var date = new Date();
             return date.getFullYear() + "-" + (date.getMonth() + 1);
