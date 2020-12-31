@@ -97,7 +97,7 @@ export default {
             cols: 3,
             dividerColor: "#4285f4",
             date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1),
-            min: "2020-01",
+            min: new Date().getFullYear() + "-" + (new Date().getMonth() + 1),
             max: new Date().getFullYear() + "-" + (new Date().getMonth() + 1),
             dialog: false,
             scroll: 0,
