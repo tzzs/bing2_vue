@@ -119,24 +119,7 @@ export default {
             // console.log("date:" + this.date.split("-").join(""));
 
             // 切换月份后，更新显示图片，重新拉起请求
-            this.axios
-                .get(
-                    "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages",
-                    {
-                        params: {
-                            month: this.date.split("-").join("")
-                        }
-                    }
-                )
-                .then(result => {
-                    // console.log(result.data);
-                    let data = result.data;
-                    this.years = data.years;
-                    this.images = data.images;
-                    this.nums = data.images.length;
-                    this.loaded = true;
-                    // console.log("请求结束");
-                });
+            this.getImages();
         }
     },
     computed: {
@@ -182,9 +165,20 @@ export default {
                 document.body.scrollTop;
         },
         getImages: function() {
+            let str = new Date().getTime() + "bing2.imtzz.com";
+
+            let sign = this.MD5(str);
+            sign = this.MD5(sign + str);
+
             this.axios
                 .get(
-                    "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages"
+                    "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages",
+                    {
+                        params: {
+                            month: this.date.split("-").join(""),
+                            sign: sign
+                        }
+                    }
                 )
                 .then(result => {
                     // console.log(result.data);
