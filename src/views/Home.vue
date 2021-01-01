@@ -25,7 +25,6 @@
                 <v-dialog v-model="dialog" max-width="290">
                     <v-date-picker
                         v-model="date"
-                        :allowed-dates="allowedMonths"
                         type="month"
                         :min="min"
                         :max="max"
@@ -102,7 +101,9 @@ export default {
             dialog: false,
             scroll: 0,
             loaded: false,
-            nums: parseInt(new Date().getDate())
+            nums: parseInt(new Date().getDate()),
+            apiUrl:
+                "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages"
         };
     },
     mounted: function() {
@@ -165,27 +166,33 @@ export default {
                 document.body.scrollTop;
         },
         getImages: function() {
-            let str = new Date().getTime() + "bing2.imtzz.com";
+            let time = new Date().getTime();
+            let str = time + "bing2.imtzz.com";
 
             let sign = this.MD5(str);
             sign = this.MD5(sign + str);
 
+            // console.log(str, "*", sign);
+
             this.axios
-                .get(
-                    "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages",
-                    {
-                        params: {
-                            month: this.date.split("-").join(""),
-                            sign: sign
-                        }
+                .get(this.apiUrl, {
+                    params: {
+                        month: this.date.split("-").join(""),
+                        sign: sign,
+                        sault: str
                     }
-                )
+                })
                 .then(result => {
                     // console.log(result.data);
                     let data = result.data;
                     this.years = data.years;
                     this.images = data.images;
                     this.nums = data.images.length;
+
+                    this.min = data.minMonth;
+                    this.max = data.maxMinth;
+
+                    // 更新组件
                     this.loaded = true;
                     // console.log("请求结束");
                 });
