@@ -1,12 +1,12 @@
 <template>
     <div id="tCalendarImages">
         <v-row v-for="row in rowsNumber" :key="row">
-            <v-col v-for="col in cols" :key="col" cols="4">
+            <v-col v-for="col in cols" :key="col" :cols="12 / cols">
                 <TCard :image="images[nums - cols * (row - 1) - col]" />
             </v-col>
         </v-row>
         <v-row v-if="lastColNumber > 0">
-            <v-col v-for="col in lastColNumber" :key="col" cols="4">
+            <v-col v-for="col in lastColNumber" :key="col" :cols="12 / cols">
                 <TCard :image="images[nums - cols * rowsNumber - col]" />
             </v-col>
         </v-row>
