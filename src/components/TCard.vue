@@ -4,7 +4,7 @@
             <v-card class="mx-auto" width="" :elevation="hover ? 4 : 0">
                 <v-img
                     class="white--text align-end"
-                    v-bind:src="image.url"
+                    v-bind:src="baseUrl + image.path"
                     lazySrc="/images/sunshine_GaussianBlur.jpg"
                     :alt="image.title"
                 >
@@ -15,15 +15,15 @@
                     <p align="left">
                         <a
                             :href="
-                                'https://cn.bing.com/search?q=' + image.subtitle
+                                bingUrl + image.copyrightlink
                             "
                             target="_blank"
                         >
-                            {{ image.title }}
+                            {{ image.text }}
                         </a>
                     </p>
                     <div class="text--primary" align="left">
-                        {{ image.text }}
+                        {{ image.copyright }}
                     </div>
                 </v-card-text>
             </v-card>
@@ -35,6 +35,12 @@
 export default {
     name: "TCard",
     // "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+    data: function() {
+        return {
+            baseUrl: this.$global.serverUrl,
+            bingUrl: this.$global.bingUrl
+        };
+    },
     props: {
         image: {
             type: Object

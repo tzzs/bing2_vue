@@ -95,15 +95,15 @@ export default {
             images: [],
             cols: 3,
             dividerColor: "#4285f4",
-            date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1),
-            min: new Date().getFullYear() + "-" + (new Date().getMonth() + 1),
-            max: new Date().getFullYear() + "-" + (new Date().getMonth() + 1),
+            date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString().padStart(2,0),
+            min: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString().padStart(2,0),
+            max: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString().padStart(2,0),
             dialog: false,
             scroll: 0,
             loaded: false,
             nums: parseInt(new Date().getDate()),
-            apiUrl:
-                "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages"
+            // apiUrl: "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages",
+            apiUrl: this.$global.getUrl,
         };
     },
     mounted: function() {
@@ -173,6 +173,7 @@ export default {
             sign = this.MD5(sign + str);
 
             // console.log(str, "*", sign);
+            // console.log(this.date)
 
             this.axios
                 .get(this.apiUrl, {

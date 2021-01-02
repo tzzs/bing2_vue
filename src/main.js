@@ -5,11 +5,13 @@ import router from './router'
 import vuetify from './plugins/vuetify';
 import axios from 'axios';
 import MD5 from 'blueimp-md5'
+import GLOBAL_ from '@/components/Global'
 
 Vue.config.productionTip = false
 
 Vue.prototype.axios = axios;
 Vue.prototype.MD5 = MD5;
+Vue.prototype.$global = GLOBAL_;
 
 new Vue({
   router,
