@@ -34,8 +34,7 @@ export default {
     },
     data: () => ({
         attrs: {
-            class: "mb-6 mx-auto",
-            boilerplate: true
+            class: "mb-6 mx-auto"
         }
     }),
     computed: {
