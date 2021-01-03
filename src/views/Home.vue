@@ -95,15 +95,24 @@ export default {
             images: [],
             cols: 3,
             dividerColor: "#4285f4",
-            date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString().padStart(2,0),
-            min: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString().padStart(2,0),
-            max: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString().padStart(2,0),
+            date:
+                new Date().getFullYear() +
+                "-" +
+                (new Date().getMonth() + 1).toString().padStart(2, 0),
+            min:
+                new Date().getFullYear() +
+                "-" +
+                (new Date().getMonth() + 1).toString().padStart(2, 0),
+            max:
+                new Date().getFullYear() +
+                "-" +
+                (new Date().getMonth() + 1).toString().padStart(2, 0),
             dialog: false,
             scroll: 0,
             loaded: false,
             nums: parseInt(new Date().getDate()),
             // apiUrl: "https://5fbdcaf4-4e9a-484d-98a8-d588a6c42d3d.mock.pstmn.io/getImages",
-            apiUrl: this.$global.getUrl,
+            apiUrl: this.$global.getUrl
         };
     },
     mounted: function() {
@@ -190,8 +199,12 @@ export default {
                     this.images = data.images;
                     this.nums = data.images.length;
 
-                    this.min = data.minMonth;
-                    this.max = data.maxMinth;
+                    let minMonth = data.minMonth;
+                    let maxMonth = data.maxMonth;
+                    this.min =
+                        minMonth.substring(0, 4) + "-" + minMonth.substring(4);
+                    this.max =
+                        maxMonth.substring(0, 4) + "-" + maxMonth.substring(4);
 
                     // 更新组件
                     this.loaded = true;
