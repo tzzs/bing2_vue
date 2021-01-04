@@ -4,7 +4,7 @@
             <v-card class="mx-auto" width="" :elevation="hover ? 4 : 0">
                 <v-img
                     class="white--text align-end"
-                    v-bind:src="baseUrl + image.path"
+                    v-bind:src="baseUrl + image.thumbnailpath"
                     lazySrc="/images/sunshine_GaussianBlur.jpg"
                     :alt="image.title"
                 >
