@@ -1,8 +1,8 @@
 <script>
-const serverUrl = "http://localhost:8000/static/";
+const serverUrl = "https://bing.imtzz.com/static/";
 const bingUrl = "https://cn.bing.com";
 // const getUrl = "http://127.0.0.1:8000/api/getImages"
-const getUrl = "http://bing.imtzz.com/api/getImages"
+const getUrl = "https://bing.imtzz.com/api/getImages"
 
 export default {
     serverUrl,
