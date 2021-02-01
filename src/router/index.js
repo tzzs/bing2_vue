@@ -30,6 +30,7 @@ const router = new VueRouter({
 })
 
 router.afterEach((to, form, next) => {
+  // Baidu Analytics
   var _hmt = _hmt || [];
   (function () {
     var hm = document.createElement("script");
@@ -38,6 +39,21 @@ router.afterEach((to, form, next) => {
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
+
+  // Google Analytics
+  (function () {
+    var hm2 = document.createElement("script");
+    hm2.src = "https://www.googletagmanager.com/gtag/js?id=G-24XWH8FH25";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm2, s);
+
+    var dataLayer = dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-24XWH8FH25');
+  })();
+
 })
 
 export default router
