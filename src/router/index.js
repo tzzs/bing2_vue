@@ -29,4 +29,14 @@ const router = new VueRouter({
   routes
 })
 
+router.afterEach((to, form, next) => {
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?9e26db0a54bbd13560f06e7f1d5b4944";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+})
+
 export default router
