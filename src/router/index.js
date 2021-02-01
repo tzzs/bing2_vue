@@ -43,7 +43,7 @@ router.afterEach((to, form, next) => {
   // Google Analytics
   (function () {
     var hm2 = document.createElement("script");
-    hm2.src = "https://www.googletagmanager.com/gtag/js?id=G-24XWH8FH25";
+    hm2.src = "https://www.googletagmanager.com/gtag/js?id=G-0NP2NVC1Y9";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm2, s);
 
@@ -51,7 +51,7 @@ router.afterEach((to, form, next) => {
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
-    gtag('config', 'G-24XWH8FH25');
+    gtag('config', 'G-0NP2NVC1Y9');
   })();
 
 })
