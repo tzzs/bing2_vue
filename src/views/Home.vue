@@ -16,7 +16,11 @@
             </v-btn>
             <v-spacer></v-spacer>
 
-            <v-btn depressed color="#fff"> ABOUT </v-btn>
+            <v-btn depressed color="#fff">
+                <a target="_blank" href="https://imtzz.com">
+                    ABOUT
+                </a>
+            </v-btn>
             <v-btn icon disabled> </v-btn>
         </v-app-bar>
 

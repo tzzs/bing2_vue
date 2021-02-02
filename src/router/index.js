@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import ga from 'vue-ga'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,8 @@ const router = new VueRouter({
   routes
 })
 
+ga(router, 'G-0NP2NVC1Y9')
+
 router.afterEach((to, form, next) => {
   // Baidu Analytics
   var _hmt = _hmt || [];
@@ -39,21 +42,6 @@ router.afterEach((to, form, next) => {
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
-
-  // Google Analytics
-  (function () {
-    var hm2 = document.createElement("script");
-    hm2.src = "https://www.googletagmanager.com/gtag/js?id=G-0NP2NVC1Y9";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm2, s);
-
-    var dataLayer = dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-0NP2NVC1Y9');
-  })();
-
 })
 
 export default router
