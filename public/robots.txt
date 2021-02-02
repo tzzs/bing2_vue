@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /static
+Sitemap: https://bing2.imtzz.com/sitemap.xml
