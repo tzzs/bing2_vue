@@ -127,6 +127,19 @@ export default {
         setTimeout(() => {
             _this.getImages();
         }, 1000);
+
+        document.oncontextmenu = function() {
+            return false;
+        };
+
+        window.onkeydown = window.onkeyup = window.onkeypress = function (
+            event
+        ) {
+            if (event.keyCode == 123) {
+                event.preventDefault();
+                window.event.returnValue = false;
+            }
+        };
     },
     watch: {
         date: function() {
